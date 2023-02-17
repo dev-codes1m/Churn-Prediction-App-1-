@@ -1,0 +1,40 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: source_code/Churn_Prediction.csv
+      md5: 5e1e541c85eeec095c0aef47b4d710bb
+      size: 370076
+    - path: src/get_data.py
+      md5: 5f0dfd76d5dafaaeea82d5b85250e720
+      size: 696
+    - path: src/load_data.py
+      md5: 7b76f758cefa5250998bba79149e740d
+      size: 694
+    outs:
+    - path: data/raw/Churn_Predicition_data.csv
+      md5: 5e1e541c85eeec095c0aef47b4d710bb
+      size: 370076
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - path: data/raw/Churn_Predicition_data.csv
+      md5: 5e1e541c85eeec095c0aef47b4d710bb
+      size: 370076
+    - path: src/split_data.py
+      md5: 568035c0ed54171ed2bae7437e145db4
+      size: 1080
+    outs:
+    - path: data/processed/test_Churn_Prediction.csv
+      md5: 0d9f59428246839323f0b4608e59a5ad
+      size: 37313
+    - path: data/processed/train_Churn_Prediction.csv
+      md5: 8e0042e9ff1bff89b3da99760192155c
+      size: 332864
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - path: src/log_production_model.py
+      md5: 55d1d7fe845e7f446e376e4bd1ac7247
+      size: 1879

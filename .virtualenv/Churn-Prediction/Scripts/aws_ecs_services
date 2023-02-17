@@ -1,0 +1,7 @@
+#!D:\Course5i MLops Practice Project\Churn Prediction App(1)\Churn Prediction App\.virtualenv\Churn-Prediction\Scripts\python.exe
+
+import sys
+from aws_ecs_services import aws_ecs_services
+
+if __name__ == "__main__":
+    sys.exit(aws_ecs_services.main())

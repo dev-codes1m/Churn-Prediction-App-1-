@@ -1,0 +1,3 @@
+#!D:\Course5i MLops Practice Project\Churn Prediction App(1)\Churn Prediction App\.virtualenv\Churn-Prediction\Scripts\python.exe
+from numba.pycc import main
+main()
